@@ -38,8 +38,9 @@
     <li><strong>Pet health content you create.</strong> Voice-recorded observations (stored as text — see "Audio" below), the AI-cleaned version of that text, per-day summaries, and any medical records you add (uploaded PDFs and their parsed text, or text you paste). This content is about your pet.</li>
     <li><strong>Household information.</strong> The household you create or join, its invite code, and its caregivers.</li>
     <li><strong>Notification tokens.</strong> If you enable notifications, a device push token so we can alert your household about new activity.</li>
+    <li><strong>Usage analytics.</strong> Metadata about how you use the app — see "Product analytics" below.</li>
   </ul>
-  <p>We do <strong>not</strong> use analytics or advertising SDKs, and we do <strong>not</strong> track you across other apps or websites.</p>
+  <p>We use <strong>PostHog</strong> for privacy-preserving product analytics and to monitor our AI features. For this we collect <strong>usage metadata only</strong> — which features you use and when (for example, that a note was recorded or a question was asked), counts and lengths, and the token usage, latency, cost, and error rate of AI requests — attributed to your account by an identifier. We do <strong>not</strong> send any of your pet-health content to analytics: your note text, questions, answers, summaries, and medical-record text never leave to PostHog. We do <strong>not</strong> use advertising SDKs, session recording, or tracking across other apps or websites.</p>
 
   <h2>Audio is processed on your device and is never stored</h2>
   <p>When you record a note, transcription happens <strong>on your device</strong> using Apple's on-device speech recognition. The <strong>audio is never uploaded and never stored</strong> — only the resulting text is saved to your household's timeline.</p>
@@ -50,6 +51,7 @@
     <li><strong>Supabase</strong> — hosts our database, authentication, file storage, and server functions, protected by row-level security so only your household can access your data.</li>
     <li><strong>Google (Gemini)</strong> — our server functions send your note/record text to Google's Gemini models to clean up transcripts, generate summaries, parse medical records, and answer questions in "Ask." The AI provider key never leaves our server.</li>
     <li><strong>Exa</strong> — when you use "Ask," the assistant may search a fixed allowlist of reputable veterinary sources to supplement your pet's records; your question text may be sent to this search provider for that purpose.</li>
+    <li><strong>PostHog</strong> — product analytics and AI monitoring. Receives <strong>usage metadata only</strong> (see "Product analytics" above) — never your pet-health content.</li>
   </ul>
   <p>We share your content <strong>only</strong> with the other caregiver(s) in your household and with the sub-processors above. We do not sell your data.</p>
 
