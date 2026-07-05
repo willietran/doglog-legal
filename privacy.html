@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+  DRAFT — review before publishing; not legal advice. Fill the [BRACKETS], then host this file
+  (e.g. GitHub Pages) and put its URL in App Store Connect → App Privacy → Privacy Policy URL.
+  Source of truth: docs/app-store/privacy-policy.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DogLog — Privacy Policy</title>
+<style>
+  :root { --ink:#1c1a17; --muted:#5c5750; --accent:#b5651d; --hair:#ece7df; }
+  * { box-sizing: border-box; }
+  body { font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         color: var(--ink); background:#fffdf9; max-width: 720px; margin: 0 auto; padding: 44px 22px 88px; }
+  h1 { font-size: 1.95rem; margin: 0 0 .1em; letter-spacing:-.01em; }
+  h2 { font-size: 1.2rem; margin: 1.9em 0 .4em; }
+  p, li { margin: .5em 0; }
+  .muted { color: var(--muted); }
+  .meta { color: var(--muted); font-size: .95rem; margin-bottom: 1.6em; }
+  a { color: var(--accent); }
+  strong { font-weight: 650; }
+  hr { border:none; border-top:1px solid var(--hair); margin:2.2em 0; }
+  table { border-collapse: collapse; width:100%; margin:.6em 0; font-size:.95rem; }
+  th, td { border:1px solid var(--hair); padding:8px 10px; text-align:left; vertical-align:top; }
+</style>
+</head>
+<body>
+  <h1>DogLog Privacy Policy</h1>
+  <p class="meta"><strong>Effective date:</strong> July 5, 2026 &middot; <strong>Provider:</strong> The Little Byte LLC &middot; <strong>Contact:</strong> willie@thelittlebyte.com</p>
+
+  <p>DogLog is a shared journal for your pet's health. This policy explains what we collect, why, who processes it, and the control you have over it.</p>
+
+  <h2>What we collect</h2>
+  <ul>
+    <li><strong>Account information.</strong> When you sign in with Apple, we receive an Apple user identifier and, if you choose to share it, your email address and name. Your name is used as your caregiver display name within your household.</li>
+    <li><strong>Pet health content you create.</strong> Voice-recorded observations (stored as text — see "Audio" below), the AI-cleaned version of that text, per-day summaries, and any medical records you add (uploaded PDFs and their parsed text, or text you paste). This content is about your pet.</li>
+    <li><strong>Household information.</strong> The household you create or join, its invite code, and its caregivers.</li>
+    <li><strong>Notification tokens.</strong> If you enable notifications, a device push token so we can alert your household about new activity.</li>
+  </ul>
+  <p>We do <strong>not</strong> use analytics or advertising SDKs, and we do <strong>not</strong> track you across other apps or websites.</p>
+
+  <h2>Audio is processed on your device and is never stored</h2>
+  <p>When you record a note, transcription happens <strong>on your device</strong> using Apple's on-device speech recognition. The <strong>audio is never uploaded and never stored</strong> — only the resulting text is saved to your household's timeline.</p>
+
+  <h2>How your content is processed (sub-processors)</h2>
+  <p>Your text content is sent to these services only to provide the app's features:</p>
+  <ul>
+    <li><strong>Supabase</strong> — hosts our database, authentication, file storage, and server functions, protected by row-level security so only your household can access your data.</li>
+    <li><strong>Google (Gemini)</strong> — our server functions send your note/record text to Google's Gemini models to clean up transcripts, generate summaries, parse medical records, and answer questions in "Ask." The AI provider key never leaves our server.</li>
+    <li><strong>Exa</strong> — when you use "Ask," the assistant may search a fixed allowlist of reputable veterinary sources to supplement your pet's records; your question text may be sent to this search provider for that purpose.</li>
+  </ul>
+  <p>We share your content <strong>only</strong> with the other caregiver(s) in your household and with the sub-processors above. We do not sell your data.</p>
+
+  <h2>"Ask" is educational, not veterinary advice</h2>
+  <p>The "Ask" feature provides <strong>educational information</strong> from your pet's records and reputable veterinary sources to help you prepare for a vet visit. It is <strong>not veterinary advice</strong>. For anything urgent, contact your veterinarian or an emergency clinic. See our Terms of Service for details.</p>
+
+  <h2>Data retention and deletion</h2>
+  <p>Your content is retained while your account exists. You can <strong>delete your account at any time</strong> from within the app (Profile &rarr; Delete account). When you do:</p>
+  <ul>
+    <li>Your Apple Sign-in token is revoked with Apple.</li>
+    <li>If you share a household with other caregivers, the household and its history remain for them; your past notes stay in the shared timeline but are <strong>anonymized</strong> (no longer attributed to you).</li>
+    <li>If you are the only member of your household, the household and all of its content (logs, summaries, records, and uploaded files) are permanently deleted.</li>
+  </ul>
+  <p>Deletion is immediate and does not require contacting support.</p>
+
+  <h2>Security</h2>
+  <p>Content is encrypted in transit (HTTPS). Access to your data is scoped to your household by row-level security. Server-only credentials are never included in the app.</p>
+
+  <h2>Children</h2>
+  <p>DogLog is not directed to children and does not knowingly collect personal information from children under 13.</p>
+
+  <h2>Changes</h2>
+  <p>We may update this policy; we will revise the effective date above and, for material changes, notify you in the app.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or requests: <a href="mailto:willie@thelittlebyte.com">willie@thelittlebyte.com</a>.</p>
+</body>
+</html>
