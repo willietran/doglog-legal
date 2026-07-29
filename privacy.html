@@ -1,82 +1,139 @@
 <!doctype html>
-<!--
-  DRAFT — review before publishing; not legal advice. Fill the [BRACKETS], then host this file
-  (e.g. GitHub Pages) and put its URL in App Store Connect → App Privacy → Privacy Policy URL.
-  Source of truth: docs/app-store/privacy-policy.md.
--->
+<!-- Source of truth: docs/app-store/privacy-policy.md -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DogLog — Privacy Policy</title>
+<title>BrainLog — Privacy Policy</title>
 <style>
-  :root { --ink:#1c1a17; --muted:#5c5750; --accent:#b5651d; --hair:#ece7df; }
+  :root { --ink:#1c1a17; --muted:#5c5750; --accent:#50764b; --hair:#ece7df; }
   * { box-sizing: border-box; }
-  body { font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-         color: var(--ink); background:#fffdf9; max-width: 720px; margin: 0 auto; padding: 44px 22px 88px; }
-  h1 { font-size: 1.95rem; margin: 0 0 .1em; letter-spacing:-.01em; }
-  h2 { font-size: 1.2rem; margin: 1.9em 0 .4em; }
-  p, li { margin: .5em 0; }
-  .muted { color: var(--muted); }
-  .meta { color: var(--muted); font-size: .95rem; margin-bottom: 1.6em; }
-  a { color: var(--accent); }
-  strong { font-weight: 650; }
-  hr { border:none; border-top:1px solid var(--hair); margin:2.2em 0; }
-  table { border-collapse: collapse; width:100%; margin:.6em 0; font-size:.95rem; }
-  th, td { border:1px solid var(--hair); padding:8px 10px; text-align:left; vertical-align:top; }
+  body { font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:#fffdf9; max-width:720px; margin:0 auto; padding:44px 22px 88px; }
+  h1 { font-size:1.95rem; margin:0 0 .1em; letter-spacing:-.01em; }
+  h2 { font-size:1.2rem; margin:1.9em 0 .4em; }
+  p, li { margin:.5em 0; }
+  .meta { color:var(--muted); font-size:.95rem; margin-bottom:1.6em; }
+  a { color:var(--accent); }
+  strong { font-weight:650; }
 </style>
 </head>
 <body>
-  <h1>DogLog Privacy Policy</h1>
-  <p class="meta"><strong>Effective date:</strong> July 5, 2026 &middot; <strong>Provider:</strong> The Little Byte LLC &middot; <strong>Contact:</strong> willie@thelittlebyte.com</p>
+  <h1>BrainLog Privacy Policy</h1>
+  <p class="meta"><strong>Effective date:</strong> July 28, 2026 &middot;
+    <strong>Provider:</strong> The Little Byte LLC &middot;
+    <strong>Contact:</strong> willie@thelittlebyte.com</p>
 
-  <p>DogLog is a shared journal for your pet's health. This policy explains what we collect, why, who processes it, and the control you have over it.</p>
+  <p>BrainLog is a private journal for organizing your physical state, symptoms, notes, and medical
+    records. This policy explains the information the app handles, why it is used, the services that
+    process it, and the controls available to you.</p>
 
-  <h2>What we collect</h2>
+  <h2>Information BrainLog handles</h2>
   <ul>
-    <li><strong>Account information.</strong> When you sign in with Apple, we receive an Apple user identifier and, if you choose to share it, your email address and name. Your name is used as your caregiver display name within your household.</li>
-    <li><strong>Pet health content you create.</strong> Voice-recorded observations (stored as text — see "Audio" below), the AI-cleaned version of that text, per-day summaries, and any medical records you add (uploaded PDFs and their parsed text, or text you paste). This content is about your pet.</li>
-    <li><strong>Household information.</strong> The household you create or join, its invite code, and its caregivers.</li>
-    <li><strong>Notification tokens.</strong> If you enable notifications, a device push token so we can alert your household about new activity.</li>
-    <li><strong>Usage analytics.</strong> Metadata about how you use the app — see "Product analytics" below.</li>
+    <li><strong>Account information.</strong> When you sign in with Apple, we receive an Apple user
+      identifier and, if you choose to share them, your name and email address.</li>
+    <li><strong>Health journal content.</strong> This includes the observations you record, cleaned
+      note text, daily summaries, medical records and extracted text, questions and answers in Ask
+      Anything, and images you choose to attach to an Ask conversation. Ask stores a bounded JPEG
+      copy rather than the original camera or photo-library asset.</li>
+    <li><strong>Legacy DogLog Archive.</strong> If you used DogLog, your existing animal-health
+      history remains available to you in a separate read-only archive. Archive content is not used
+      in BrainLog summaries, search, Ask context, model prompts, or human-health analytics.</li>
+    <li><strong>Device and service information.</strong> We may process an Apple Push Notification
+      service token if you enable notifications, purchase and entitlement metadata associated with
+      the existing App Store product, and limited operational and usage metadata described below.</li>
   </ul>
-  <p>We use <strong>PostHog</strong> for privacy-preserving product analytics and to monitor our AI features. For this we collect <strong>usage metadata only</strong> — which features you use and when (for example, that a note was recorded or a question was asked), counts and lengths, and the token usage, latency, cost, and error rate of AI requests — attributed to your account by an identifier. We do <strong>not</strong> send any of your pet-health content to analytics: your note text, questions, answers, summaries, and medical-record text never leave to PostHog. We do <strong>not</strong> use advertising SDKs, session recording, or tracking across other apps or websites.</p>
 
-  <h2>Audio is processed on your device and is never stored</h2>
-  <p>When you record a note, transcription happens <strong>on your device</strong> using Apple's on-device speech recognition. The <strong>audio is never uploaded and never stored</strong> — only the resulting text is saved to your household's timeline.</p>
+  <h2>Audio</h2>
+  <p>When you record a note, transcription occurs on your device using Apple's speech recognition.
+    The audio is not uploaded or stored by BrainLog. Only the resulting text is saved to your
+    private journal.</p>
 
-  <h2>How your content is processed (sub-processors)</h2>
-  <p>Your text content is sent to these services only to provide the app's features:</p>
+  <h2>How we use information</h2>
+  <p>We use your information to authenticate you; store, display, and delete your journal;
+    transcribe notes; clean up text; generate summaries; extract information from records; answer
+    your questions; provide requested web research; operate notifications and purchases; prevent
+    abuse; diagnose failures; and maintain the security of the service.</p>
+  <p>BrainLog does not sell your information and does not use health content for advertising.</p>
+
+  <h2>Services that process information</h2>
+  <p>We use the following service providers only to operate BrainLog:</p>
   <ul>
-    <li><strong>Supabase</strong> — hosts our database, authentication, file storage, and server functions, protected by row-level security so only your household can access your data.</li>
-    <li><strong>Google (Gemini)</strong> — our server functions send your note/record text to Google's Gemini models to clean up transcripts, generate summaries, parse medical records, and answer questions in "Ask." The AI provider key never leaves our server.</li>
-    <li><strong>Exa</strong> — when you use "Ask," the assistant may search a fixed allowlist of reputable veterinary sources to supplement your pet's records; your question text may be sent to this search provider for that purpose.</li>
-    <li><strong>PostHog</strong> — product analytics and AI monitoring. Receives <strong>usage metadata only</strong> (see "Product analytics" above) — never your pet-health content.</li>
+    <li><strong>Apple</strong> provides Sign in with Apple, on-device speech recognition, App Store
+      purchases, and push notifications.</li>
+    <li><strong>Supabase</strong> provides authentication, database hosting, private file storage,
+      and server functions. Human-health data is restricted to the signed-in owner.</li>
+    <li><strong>Google Gemini</strong> processes note text, medical-record files (including uploaded
+      PDFs) and extracted record text, Ask questions, relevant journal context, and images you
+      attach when needed to provide the AI features you request.</li>
+    <li><strong>Exa</strong> may process an Ask question to research a fixed allowlist of reputable
+      human-health sources. Research results are used only for that Ask response.</li>
+    <li><strong>PostHog</strong> receives metadata-only product and AI telemetry as described below.</li>
+    <li><strong>RevenueCat</strong> may receive an account identifier and App Store purchase or
+      entitlement metadata to preserve purchase continuity. It does not receive your health
+      journal or archive content.</li>
   </ul>
-  <p>We share your content <strong>only</strong> with the other caregiver(s) in your household and with the sub-processors above. We do not sell your data.</p>
+  <p>These providers may process information in the United States or other locations where they
+    operate, subject to their own security and privacy commitments.</p>
 
-  <h2>"Ask" is educational, not veterinary advice</h2>
-  <p>The "Ask" feature provides <strong>educational information</strong> from your pet's records and reputable veterinary sources to help you prepare for a vet visit. It is <strong>not veterinary advice</strong>. For anything urgent, contact your veterinarian or an emergency clinic. See our Terms of Service for details.</p>
+  <h2>Metadata-only analytics boundary</h2>
+  <p>BrainLog uses PostHog for product analytics and AI reliability monitoring. PostHog may receive
+    bounded metadata such as feature and screen identifiers, timestamps, counts, lengths, booleans,
+    bounded status or error categories, token counts, latency, and estimated cost, associated with
+    an account identifier.</p>
+  <p>PostHog does <strong>not</strong> receive health note text, record content, Ask questions or
+    answers, summaries, images, audio, prompts, model output, web excerpts, file or Storage paths,
+    or Legacy DogLog Archive content. BrainLog does not use advertising SDKs, cross-app tracking,
+    or session replay.</p>
 
-  <h2>Data retention and deletion</h2>
-  <p>Your content is retained while your account exists. You can <strong>delete your account at any time</strong> from within the app (Profile &rarr; Delete account). When you do:</p>
-  <ul>
-    <li>Your Apple Sign-in token is revoked with Apple.</li>
-    <li>If you share a household with other caregivers, the household and its history remain for them; your past notes stay in the shared timeline but are <strong>anonymized</strong> (no longer attributed to you).</li>
-    <li>If you are the only member of your household, the household and all of its content (logs, summaries, records, and uploaded files) are permanently deleted.</li>
-  </ul>
-  <p>Deletion is immediate and does not require contacting support.</p>
+  <h2>AI health information and emergencies</h2>
+  <p>BrainLog's AI features organize information and provide general educational information. They
+    do not provide medical care, diagnose conditions, prescribe treatment, recommend individualized
+    dosing, or monitor emergencies. AI output can be incomplete, inaccurate, or outdated. Check
+    important information with a qualified healthcare professional.</p>
+  <p>For urgent or life-threatening symptoms, call 911 or your local emergency number. Do not rely
+    on BrainLog to assess or monitor an emergency.</p>
 
-  <h2>Security</h2>
-  <p>Content is encrypted in transit (HTTPS). Access to your data is scoped to your household by row-level security. Server-only credentials are never included in the app.</p>
+  <h2>Privacy and security</h2>
+  <p>Human logs, summaries, records, Ask history, images, and stored files are isolated from other
+    accounts using database row-level security and private Storage policies. Legacy animal data is
+    kept in a separate read-only path and is not available to active BrainLog AI or analytics.</p>
+  <p>Information is encrypted in transit using HTTPS. Server credentials and AI provider keys are
+    not included in the app. No method of storage or transmission is completely secure, so we
+    cannot guarantee absolute security.</p>
+  <p>BrainLog is a consumer app offered directly to individuals. We do not claim that BrainLog is
+    HIPAA compliant or that The Little Byte LLC is acting as a HIPAA covered entity or business
+    associate.</p>
+
+  <h2>Retention and deletion</h2>
+  <p>We retain your account and content while your account exists and as needed to operate the
+    service, comply with law, resolve disputes, or protect the service.</p>
+  <p>You can delete an individual human-health record or your human journal in the app. You can also
+    delete your account from the app. Deletion removes associated private files before database
+    rows and is designed to resume safely if interrupted. Account deletion also requests revocation
+    of your Sign in with Apple token.</p>
+  <p>If you are the sole remaining member of a former DogLog household, account deletion permanently
+    deletes that household's animal-health evidence and stored record objects. If another
+    authorized member remains, account deletion does not delete animal-health history that belongs
+    to that other member. In either case, your own access to the Legacy DogLog Archive ends when
+    your account is deleted. Some limited security, deletion-receipt, or legal records may be
+    retained when reasonably necessary and permitted by law.</p>
+
+  <h2>Your choices</h2>
+  <p>You may choose whether to provide optional name and email information through Apple, whether
+    to enable notifications, whether to attach images, and whether to use AI and web-research
+    features. You may review and delete supported content in the app or delete your account.</p>
 
   <h2>Children</h2>
-  <p>DogLog is not directed to children and does not knowingly collect personal information from children under 13.</p>
+  <p>BrainLog is not directed to children under 13, and we do not knowingly collect personal
+    information from children under 13.</p>
 
   <h2>Changes</h2>
-  <p>We may update this policy; we will revise the effective date above and, for material changes, notify you in the app.</p>
+  <p>We may update this policy. We will revise the effective date above and provide notice in the
+    app when a material change requires it.</p>
 
   <h2>Contact</h2>
-  <p>Questions or requests: <a href="mailto:willie@thelittlebyte.com">willie@thelittlebyte.com</a>.</p>
+  <p>For privacy questions or requests, contact
+    <a href="mailto:willie@thelittlebyte.com">willie@thelittlebyte.com</a>.</p>
 </body>
 </html>
