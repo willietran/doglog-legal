@@ -36,6 +36,13 @@
       note text, daily summaries, medical records and extracted text, questions and answers in Ask
       Anything, and images you choose to attach to an Ask conversation. Ask stores a bounded JPEG
       copy rather than the original camera or photo-library asset.</li>
+    <li><strong>Optional Apple Health information.</strong> If you explicitly connect Apple Health,
+      Symplifi requests read-only access to sleep analysis; steps; active energy; exercise time;
+      workouts; resting heart rate; heart-rate variability (HRV SDNN); respiratory rate; and
+      sleeping wrist temperature. Raw HealthKit samples, sample identifiers, source-app
+      information, and device identifiers stay on your iPhone. Symplifi stores only deterministic
+      daily aggregates, the applicable local date and time-zone identifier, and sync metadata in
+      your private Supabase account.</li>
     <li><strong>Legacy DogLog Archive.</strong> If you used DogLog, your existing animal-health
       history remains available to you in a separate read-only archive. Archive content is not used
       in Symplifi summaries, search, Ask context, model prompts, or human-health analytics.</li>
@@ -59,15 +66,20 @@
   <h2>Services that process information</h2>
   <p>We use the following service providers only to operate Symplifi:</p>
   <ul>
-    <li><strong>Apple</strong> provides Sign in with Apple, on-device speech recognition, App Store
-      purchases, and push notifications.</li>
+    <li><strong>Apple</strong> provides Sign in with Apple, on-device speech recognition, optional
+      read-only HealthKit access, App Store purchases, and push notifications.</li>
     <li><strong>Supabase</strong> provides authentication, database hosting, private file storage,
       and server functions. Human-health data is restricted to the signed-in owner.</li>
     <li><strong>Google Gemini</strong> processes note text, medical-record files (including uploaded
       PDFs) and extracted record text, Ask questions, relevant journal context, and images you
-      attach when needed to provide the AI features you request.</li>
-    <li><strong>Exa</strong> may process an Ask question to research a fixed allowlist of reputable
-      human-health sources. Research results are used only for that Ask response.</li>
+      attach when needed to provide the AI features you request. Apple Health daily aggregates are
+      sent to Gemini only when you request an Ask response that uses them or when Symplifi
+      generates the existing Daily Summary for a day that already has one of your journal entries.
+      Apple Health data alone never triggers a Daily Summary or Gemini call.</li>
+    <li><strong>Exa</strong> may process a generic health topic derived from an Ask request to
+      research a fixed allowlist of reputable human-health sources. Exact personal Apple Health
+      measurements and dates are never sent to Exa. Research results are used only for that Ask
+      response.</li>
     <li><strong>PostHog</strong> receives metadata-only product and AI telemetry as described below.</li>
     <li><strong>RevenueCat</strong> may receive an account identifier and App Store purchase or
       entitlement metadata to preserve purchase continuity. It does not receive your health
@@ -83,8 +95,44 @@
     an account identifier.</p>
   <p>PostHog does <strong>not</strong> receive health note text, record content, Ask questions or
     answers, summaries, images, audio, prompts, model output, web excerpts, file or Storage paths,
-    or Legacy DogLog Archive content. Symplifi does not use advertising SDKs, cross-app tracking,
-    or session replay.</p>
+    or Legacy DogLog Archive content. For Apple Health sync, PostHog may receive only coarse
+    booleans, bounded counts, latency, and allowlisted generic error categories. It does not
+    receive Apple Health values, dates, sleep intervals, per-category permission information,
+    source or device information, provenance, or sync payload content. Symplifi does not use
+    advertising SDKs, cross-app tracking, or session replay.</p>
+
+  <h2>Optional Apple Health connection</h2>
+  <p>Connecting Apple Health is voluntary and is not required to use the rest of Symplifi. Before
+    Apple's permission sheet appears, Symplifi explains the requested categories, the initial
+    import, ongoing sync, private storage, and AI processing described in this policy. Symplifi
+    asks only for read access and never writes to Apple Health.</p>
+  <p>If you connect, Symplifi imports up to the trailing 366 authorized local dates and can
+    continue refreshing in the foreground and through Apple Health background delivery. It stores
+    nullable daily totals or averages for the approved categories, sleep interval and available
+    stage aggregates, aggregate workout count, duration, energy, and activity types, along with
+    local date, time-zone identifier, aggregation version, and server timestamps. It does not
+    upload or store raw samples, sample UUIDs, source apps, device identifiers, or individual
+    workout or sleep intervals. Stored history can grow through ongoing sync and is retained until
+    you disconnect Apple Health, delete your journal, or delete your account.</p>
+  <p>HealthKit does not tell an app whether you denied a particular read category. Symplifi
+    therefore does not claim that an individual category was granted or denied. A category with no
+    available data may be denied, unavailable, outside the authorized history, or simply have no
+    recorded data. Missing measurements are treated as unknown, not as zero or proof that
+    something did not happen.</p>
+  <p>Apple Health measurements remain separate from observations you write. They may enrich Ask
+    and the existing Daily Summary, with Apple Health identified as the source. A day containing
+    only Apple Health measurements gets no summary and causes no Gemini request. Symplifi may
+    describe recorded associations but does not use Apple Health for diagnosis, treatment
+    direction, threshold-based alerts, or emergency monitoring.</p>
+  <p>One server-issued, private connection credential determines which connected device may upload
+    for the account at a time. Connecting or reconnecting on another device replaces that
+    credential so older uploaders fail closed. The server stores only a one-way hash of the
+    credential and does not store a HealthKit or installation device identifier.</p>
+  <p>Disconnecting in Symplifi stops future uploads and deletes all imported Apple Health daily
+    aggregates from your account. It does not revoke Apple's HealthKit permission; revoke that
+    separately in the Health app or iOS Settings if desired. Disconnecting or deleting your
+    journal or account also clears the corresponding local sync state. Signing out stops observers
+    and uploads, and another account must separately consent.</p>
 
   <h2>AI health information and emergencies</h2>
   <p>Symplifi's AI features organize information and provide general educational information. They
@@ -109,9 +157,10 @@
   <p>We retain your account and content while your account exists and as needed to operate the
     service, comply with law, resolve disputes, or protect the service.</p>
   <p>You can delete an individual human-health record or your human journal in the app. You can also
-    delete your account from the app. Deletion removes associated private files before database
-    rows and is designed to resume safely if interrupted. Account deletion also requests revocation
-    of your Sign in with Apple token.</p>
+    delete your account from the app. Journal or account deletion removes the Apple Health
+    connection, stored daily aggregates, and corresponding local sync state. Deletion removes
+    associated private files before database rows and is designed to resume safely if interrupted.
+    Account deletion also requests revocation of your Sign in with Apple token.</p>
   <p>If you are the sole remaining member of a former DogLog household, account deletion permanently
     deletes that household's animal-health evidence and stored record objects. If another
     authorized member remains, account deletion does not delete animal-health history that belongs
@@ -121,8 +170,9 @@
 
   <h2>Your choices</h2>
   <p>You may choose whether to provide optional name and email information through Apple, whether
-    to enable notifications, whether to attach images, and whether to use AI and web-research
-    features. You may review and delete supported content in the app or delete your account.</p>
+    to enable notifications, whether to attach images, whether to connect Apple Health, and whether
+    to use AI and web-research features. You may review and delete supported content in the app,
+    disconnect Apple Health, or delete your journal or account.</p>
 
   <h2>Children</h2>
   <p>Symplifi is not directed to children under 13, and we do not knowingly collect personal
